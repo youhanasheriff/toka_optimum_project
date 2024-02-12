@@ -22,9 +22,9 @@ previousElements.forEach((element) => {
 const addButton = document.querySelector('.add-product-btn');
 const productsSection = document.querySelector('.products');
 
-if (!!addButton) { 
+if (!!addButton) {
   addButton.addEventListener('click', () => {
-  alert('Product added to cart');
+    alert('Product added to cart');
   });
 }
 
@@ -112,17 +112,78 @@ products.forEach(product => {
     const productImage = document.createElement('img');
     productImage.src = product.image;
 
-    const fishName = document.createElement('h3');
-    fishName.textContent = product.fishName;
+    const tank = document.createElement('div');
+    tank.classList.add('tank-details');
 
-    const productDescription = document.createElement('p');
-    productDescription.textContent = product.description;
+
+    const fishName = document.createElement('h3');
+    fishName.textContent = 'Fish Name: ';
+
+    const fishValue = document.createElement('span');
+    fishValue.textContent = product.fishName;
+
+    const hr = document.createElement('hr');
+
+
+    const temperature = document.createElement('p');
+    temperature.textContent = 'Temperature: ';
+
+    const tempDetails = document.createElement('span');
+    tempDetails.textContent = product.temperature;
+
+    const ph = document.createElement('p');
+
+    ph.textContent = 'PH: ';
+
+    const phDetails = document.createElement('span');
+
+    phDetails.textContent = product.ph;
+
+    const turbidity = document.createElement('p');
+
+    turbidity.textContent = 'Turbidity: ';
+
+    const turbidityDetails = document.createElement('span');
+    turbidityDetails.textContent = product.turbidity;
+
+    const hr2 = document.createElement('hr');
+
+    const btn = document.createElement('button');
+
+    btn.textContent = 'Back';
 
     discoverHero.innerHTML = ``;
 
     productDetails.appendChild(productImage);
-    productDetails.appendChild(productName);
-    productDetails.appendChild(productDescription);
+
+    productDetails.appendChild(tank);
+
+    tank.appendChild(fishName);
+    fishName.appendChild(fishValue);
+
+ tank.appendChild(hr);
+    temperature.appendChild(tempDetails);
+
+    ph.appendChild(phDetails);
+    tank.appendChild(turbidity);
+    turbidity.appendChild(turbidityDetails);
+    
+   
+   
+    
+    tank.appendChild(ph);
+    tank.appendChild(temperature);
+
+    tank.appendChild(hr2);
+
+    tank.appendChild(btn);
+
+    btn.addEventListener('click' ,() => {
+      discoverHero.innerHTML = ``;
+      previousElements.forEach((element) => {
+        discoverHero.appendChild(element);
+      });
+    })
 
     discoverHero.appendChild(productDetails);
   });
